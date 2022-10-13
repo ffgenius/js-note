@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+
+    <!--
+        axios请求拦截器
+            1. 是什么？
+                在真正发请求签执行的一个回调函数
+            2. 作用：
+                对所有的请求做统一的处理：追加请求头、追加参数、界面loading提示等等
+
+       axios响应拦截器
+            1. 是什么？
+                得到响应之后执行的一个回调函数
+            2. 作用：
+                若请求成功，对成功的数据进行处理
+                若请求失败，对失败进行进一步操作
+    -->
+</head>
+<body>
+    <button id="btn1">点击获取所有人信息</button>
+    <script>
+        const btn1 =  document.getElementById("btn1");
+        // 请求拦截器
+        axios.interceptors.request.use((config) => {
+            config.headers.token = 'demo';
+            return config
+        })
+
+        // 响应拦截器
+        axios.interceptors.response.use(
+            response => {
+                console.log('成功', response)
+                return response.data
+            },
+            error => {
+                console.log('失败', error)
+                return new Promise(() => {})
+            }
+        )
+        btn1.onclick = async () => {
+            // 完整版
+            const result = await axios({
+                url: 'http://localhost:5000/persons', // 请求地址
+                method: 'GET', // 请求方式
+            })
+            console.log('成功', result)
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+</head>
+<body>
+    <button id="btn1">点击获取所有人信息</button>
+    <button id="btn2">取消请求</button>
+    <script>
+        const btn1 =  document.getElementById("btn1");
+        const btn2 =  document.getElementById("btn2");
+
+        const {CancelToken, isCancel} = axios;
+        let cancel
+
+
+        btn1.onclick = () => {
+            // 完整版
+            axios({
+                url: 'http://localhost:5000/persons', // 请求地址
+                cancelToken: new CancelToken((c) => {
+                    cancel = c;
+                }),
+                method: 'GET', // 请求方式
+            }).then(
+                response => {
+                    console.log("成功", response)},
+                error => {
+                    if(isCancel(error)) {
+                        console.log('用户取消', error.message)
+                    } else {
+                        console.log('失败', error)
+                    }
+                }
+            )
+        }
+
+
+    </script>
+</body>
+</html>

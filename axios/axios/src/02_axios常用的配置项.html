@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+</head>
+<body>
+    <button id="btn1">点击获取所有人信息</button>
+    <script>
+        // 配置axios默认属性
+        axios.defaults.timeout = 2000;
+        axios.defaults.headers = {demo: 123};
+        axios.defaults.baseURL = 'http://localhost:5000';
+        const btn1 =  document.getElementById("btn1");
+        btn1.onclick = () => {
+            // 完整版 配置项需要使用完整版写法
+            axios({
+                url: '/persons', // 请求地址
+                method: 'GET', // 请求方式
+                // params: {a:1,b:2}, // 配置query参数
+                // data: {c:3,d:4}, // 配置请求体参数(json编码)
+                // data: `e=5&f=6`,  // 配置请求体参数(urlencoded编码)
+                // timeout: 2000, // 配置超时时间
+                // headers: {demo: 123}, // 配置请求头
+                // responseType: 'json' // 配置响应数据的格式(默认值)
+            }).then(
+                response => {
+                    console.log("成功", response)},
+                error => {
+                    console.log("失败", error)}
+            )
+
+        }
+    </script>
+</body>
+</html>
