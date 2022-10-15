@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 节流：控制一段时间内触发的次数，减少一段时间的触发频率 -->
+
+    <!--
+        使用场景：
+            1. scroll 事件， 每隔一段时间计算位置信息
+            2. input 框实时搜索并发送请求，每隔一段时间发送一次请求
+    -->
+
+    <input type="text">
+    <script>
+        let input = document.querySelector('input');
+
+        const throttle = (() => {
+            // 设置上一次触发时间
+            let last = 0;
+            return (callback, time) => {
+                // 获取当前时间戳
+                let now = +new Date();
+                // 当前时间减去上一次触发时间大于规定的延时时间，触发时间
+                if (now - last > time) {
+                    callback();
+                    // 重置上一次执行时间
+                    last = now;
+                }
+            }
+        })();
+
+        input.addEventListener('input', function () {
+            // 调用节流函数
+            throttle(() => {
+                if (input.value === '') {
+                    return;
+                }
+                console.log(input.value)
+            }, 2000);
+        })
+    </script>
+</body>
+</html>

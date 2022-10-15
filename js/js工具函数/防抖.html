@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 防抖：借助setTimeout定时器，在一定的间隔时间内，将多次触发变为一次触发 -->
+
+    <!--
+        使用场景：
+            1. 登录、发送短信等按钮避免用户点击太快，以致于发送多次请求，需要防抖
+            2. 调整浏览器窗口大小，resize 次数过于频繁，造成计算次数过多
+            3. 搜索框搜索输入，不需要每输入一个字就进行搜索，等待一段时间没有再次输入就返回结果
+    -->
+    <input type="text" value="123">
+    <button>提交</button>
+    <script>
+        let input = document.querySelector('input');
+        let btn = document.querySelector('button');
+
+        const debounce = (() => {
+            // 设置一个空定时器
+            let timer = null;
+            return (callback, time) => {
+                // 判断是否存在定时器，存在则清空定时器
+                timer && clearTimeout(timer);
+                timer = setTimeout(callback, time);
+            }
+        })(); // 自调用，return
+        btn.addEventListener('click', function () {
+            debounce(() => {
+                // 回调函数，发送请求或登录操作
+                console.log(input.value)
+            }, 800)
+        })
+    </script>
+</body>
+</html>

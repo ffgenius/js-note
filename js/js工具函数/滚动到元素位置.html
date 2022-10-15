@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 500px;
+            height: 1000px;
+            border: 10px solid pink;
+        }
+    </style>
+</head>
+<body>
+<!--    <button>回到h2位置</button>-->
+    <div class="box"></div>
+    <h2>你好</h2>
+    <div class="box"></div>
+    <button>回到h2位置</button>
+    <script>
+        const scrollElement = (element) => {
+            document.querySelector(element).scrollIntoView({behavior: 'smooth'});
+        }
+        document.querySelector('button').addEventListener('click', function () {
+            scrollElement('h2');
+        })
+    </script>
+</body>
+</html>

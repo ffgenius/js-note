@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性简写</title>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName"> <br><br>
+        名：<input type="text" v-model="lastName"> <br><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                firstName: '张',
+                lastName: '三',
+            },
+            // 完整写法
+            computed: {
+                /* fullName:{
+                    get(){
+                        return this.firstName + '-' + this.lastName
+                    },
+                } */
+                fullName() {
+                    return this.firstName + '-' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

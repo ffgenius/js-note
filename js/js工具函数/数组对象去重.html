@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const responseList = [
+            {id: 1, name: '张三', sex: '女'},
+            {id: 2, name: '李四'},
+            {id: 3, name: '王五'},
+            {id: 4, name: '张三', sex: '男'},
+            {id: 2, name: '李四'},
+            {id: 3, name: '王五'},
+        ]
+
+        const uniqueArrayObject = (arr, key) => {
+            let list = [];
+            let map = {};
+            if (arr.length === 0 ) return 0;
+             arr.forEach( (item) => {
+                 if(!map[item[key]]) {
+                     map[item[key]] = item;
+                 }
+             });
+            console.log(map);
+            list = Object.values(map);
+            console.log(list)
+            return list;
+        }
+
+        uniqueArrayObject(responseList, 'id')
+    </script>
+</body>
+</html>

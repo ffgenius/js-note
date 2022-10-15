@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2></h2>
+    <button>转大写</button>
+    <button>转小写</button>
+    <button>首字母大写</button>
+
+    <script>
+        let str = 'Hello World!';
+        document.querySelector('h2').innerHTML = str;
+        let btn = document.querySelectorAll('button');
+
+        const turnCase = (str, type) => {
+            switch (type) {
+                case 0:
+                    return str.toUpperCase();
+                case 1:
+                    return str.toLowerCase();
+                case 2:
+                    return str[0].toUpperCase() + str.substring(1).toLowerCase()
+            }
+        }
+
+        // 遍历 btn 数组
+        btn.forEach((item, index) => {
+            item.addEventListener('click', function () {
+                str = turnCase(str, index);
+                document.querySelector('h2').innerHTML = str;
+            })
+        })
+    </script>
+</body>
+</html>

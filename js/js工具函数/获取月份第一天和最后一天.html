@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        getFistLastDay = () => {
+            let now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth();
+            let firstDay = new Date(year, month, 1);
+            let lastDay = new Date(year, month + 1, 0);
+            firstDay = firstDay.getMonth() + 1 + '/' + '0' + firstDay.getDate();
+            lastDay = lastDay.getMonth() + 1 + '/' + lastDay.getDate();
+            return {firstDay, lastDay}
+        }
+        console.log(getFistLastDay())
+    </script>
+</body>
+</html>

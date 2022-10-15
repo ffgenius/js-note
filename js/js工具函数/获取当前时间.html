@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const getTime = (data = new Date()) => {
+            let year = data.getFullYear();
+            let month = data.getMonth() + 1;
+            month = month < 10 ? '0' + month : month;
+            let day = data.getDate();
+            day = day < 10 ? '0' + day : day;
+            let hours = data.getHours();
+            let minutes = data.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            let seconds = data.getSeconds()
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            return year + '/' + month + '/' + day + ' ' + hours + ':' + minutes + ':' + seconds
+        }
+        console.log(getTime())
+    </script>
+</body>
+</html>

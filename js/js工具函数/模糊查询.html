@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--  模糊查询：利用数据的部分信息进行查找的一种查询方式   -->
+    <input type="text">
+    <button>搜索</button>
+    <script>
+        let input = document.querySelector('input');
+        let btn = document.querySelector('button');
+        const searchQuery = (list, keyword, attr) => {
+            const reg = new RegExp(keyword);
+            const arr = [];
+            list.forEach((item) => {
+                if (reg.test(item[attr])) {
+                    arr.push(item);
+                }
+            })
+            return arr;
+        }
+
+        list = [
+            {id: 1, name: '张三'},
+            {id: 2, name: '李四'},
+            {id: 3, name: '王五'},
+            {id: 4, name: '张三丰'},
+            {id: 5, name: '李老四'},
+            {id: 6, name: '王老五'},
+        ]
+        btn.addEventListener('click', function() {
+            searchQuery(list, input.value, 'name');
+            console.log(searchQuery(list, input.value, 'name'));
+        })
+    </script>
+</body>
+</html>
