@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本列表</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--  
+        v-for:
+            1. 用于展示列表
+            2. 语法：v-for="(item, index) in xxx" :key="index"
+            3. 可遍历 数组，对象，字符串，指定次数
+    -->
+    <div id="root">
+        <ul>
+            <!-- 遍历数组 -->
+            <h2>人员列表</h2>
+            <li v-for="(p,index) in persons" :key="p.id">{{p.name}} - {{p.age}}</li><br>
+
+            <!-- 遍历对象 -->
+            <li v-for="(c,index) in car" :key="index">{{c}}--{{index}}</li><br>
+            
+            <!-- 遍历字符串 -->
+            <li v-for="(s,index) in str" :key="index">{{s}}--{{index}}</li><br>
+
+            <!-- 遍历指定次数 -->
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    persons: [
+                        {
+                            id: '01',
+                            name: '张三',
+                            age: 18
+                        },
+                        {
+                            id: '02',
+                            name: '李四',
+                            age: 19
+                        },
+                        {
+                            id: '03',
+                            name: '王五',
+                            age: 20
+                        }
+                    ],
+                    car: {
+                        name: '奥迪',
+                        color: 'red',
+                        price: '100w',
+                    },
+                    str: 'hello',
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>

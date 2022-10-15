@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--  
+        条件渲染：
+            1. v-if
+                写法： v-if="表达式"
+                        v-else-if="表达式"
+                        v-else="表达式"
+                适用于切换频率比较低的场景
+                特点：不展示的DOM元素直接移除
+                注意：v-if可以和v-else-if，v-else一起使用，但不能被打断
+            
+            2. v-show
+                写法： v-show="表达式"
+                适用于切换频率比较高的场景
+                特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏
+            
+            3.备注： 使用v-if时，元素可能无法获取到，但v-show一定能获取到
+    -->
+    <div id="root">
+        <!-- 使用v-show做条件渲染 -->
+        <h2 v-show="false">欢迎来到{{name}}</h2>
+
+        <!-- v-if -->
+        <h2 v-if="false">你好，{{name}}</h2>
+
+        <!-- v-else -->
+        <!-- v-else-if -->
+
+        <!-- template 只能和v-if配合使用 -->
+        <template v-if="true">
+            <h2>1</h2>
+            <h2>1</h2>
+            <h2>1</h2>
+        </template>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'lyun'
+                }
+            },
+        })
+    </script>
+</body>
+</html>
