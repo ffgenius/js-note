@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+         function myAjax(options) {
+             let xhr;
+             let params = formsParams(options.data);
+
+             if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                // 兼容IE
+                xhr = new ActiveXObject('Microsoft.XMLHTTP')
+            }
+
+             if (options.type === "GET") {
+                 xhr.open(options.type, options.url + "?" + params, options.async);
+                 xhr.send()
+             } else if (options.type === "POST") {
+                 xhr.open(options.type, options.url, options.async);
+                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                 xhr.send(params);
+             }
+
+             xhr.onreadystatechange = function () {
+                 if (xhr.readyState === 4 && xhr.status === 200) {
+                     options.success(xhr.responseText);
+                 }
+             }
+            // 处理数据
+             function formsParams(data) {
+                 let arr = [];
+                 for (let prop in data) {
+                     arr.push(prop + "=" + data[prop]);
+                 }
+                 return arr.join("&");
+             }
+         }
+
+         myAjax({
+             // url:地址
+             url: "http://localhost:5000/persons",
+             // type : 请求方式
+             type: "GET",
+             // async: 同步：false，异步：true
+             async: true,
+
+             // 返回接受信息
+             success: function (data) {
+                 console.log(JSON.parse(data));
+                 myAjax({
+                     // url:地址
+                     url: "http://localhost:5000/persons",
+                     // type : 请求方式
+                     type: "GET",
+                     // async: 同步：false，异步：true
+                     async: true,
+                     success: function (data) {
+                         console.log(JSON.parse(data))
+                     }
+                 })
+             }
+         })
+    </script>
+</body>
+</html>

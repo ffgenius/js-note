@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // Promise封装Ajax请求
+        function myAjax(method, url, data) {
+            let xhr = new XMLHttpRequest();
+            return new Promise(function (resolve, reject) {
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(xhr.status);
+                    }
+
+                };
+                xhr.open(method, url);
+                xhr.send(data);
+            });
+        }
+
+        myAjax('GET', 'http://localhost:5000/persons').then(function (data) {
+            // 返回成功的结果
+            console.log(data);
+        },function (res) {
+            // 返回失败的结果
+            console.log(res);
+        });
+    </script>
+</body>
+</html>

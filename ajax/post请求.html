@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 创建 XMLHttpRequest 对象
+        let xhr = new XMLHttpRequest();
+
+        // 设置请求参数。 包括请求方法、请求url
+        xhr.open('post', 'http://localhost:5000/person');
+
+        // 如果想要post提交数据，必须添加此行
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        // 发送请求
+        xhr.send('name=fox&age=18');
+
+        // 注册事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(JSON.parse(xhr.response).data)
+            }
+        }
+    </script>
+</body>
+</html>
