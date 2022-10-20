@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function repeat(func, times, wait) {
+        return function (val) {
+            let count = 0;
+            //func(val);如果一开始就打印 就先执行一遍再使用计时器，后面次数减1
+            let timer = setInterval(() => {
+                count++;
+                count >= times ? clearInterval(timer) : '';
+                func(val);
+            }, wait)
+        }
+    }
+
+    const repeatFunc = repeat(console.log, 4, 1000)
+    repeatFunc('hello')
+
+</script>
+</body>
+</html>

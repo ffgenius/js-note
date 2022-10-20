@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      //去重
+      const arr = [1,1,2,2,3,3,4,4,5,5];
+      const handleRemoveRepeat = (arr) => {
+          let repeatArr = [];
+          for (let i = 0,len = arr.length ; i < len; i++)
+              if (repeatArr.indexOf(arr[i]) === -1)  repeatArr.push(arr[i])
+          return repeatArr;
+      }
+
+      console.log(handleRemoveRepeat(arr))
+    </script>
+</body>
+</html>

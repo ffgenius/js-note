@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03242f9c-e1a0-4ede-8d17-e0b372ae1d30" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js工具函数/大小写转化.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/数组对象去重.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/校验数据类型.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/模糊查询.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/滚动到元素位置.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/节流.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/获取当前时间.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/获取月份第一天和最后一天.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js工具函数/防抖.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/定时器重复输出.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/数组去重/Set去重.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/数组去重/filter去重.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/数组去重/includes去重.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/数组去重/indexOf去重.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js工具函数/数组去重/双重for循环.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js工具函数/数组对象去重.html" beforeDir="false" afterPath="$PROJECT_DIR$/js工具函数/数组对象去重.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/基础面试题.md" beforeDir="false" afterPath="$PROJECT_DIR$/基础面试题.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +71,8 @@
       <workItem from="1665627482119" duration="9000" />
       <workItem from="1665763821275" duration="4361000" />
       <workItem from="1665816576916" duration="7743000" />
+      <workItem from="1666231990214" duration="5450000" />
+      <workItem from="1666256788521" duration="287000" />
     </task>
     <servers />
   </component>
