@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const randomValues = (arr, count) => {
+            let i = arr.length, min = i - count, temp, index;
+            while (i-- > min) {
+                // 随机取一个数组长度内的值
+                index = Math.floor((i + 1) * Math.random());
+                // 取出数组内的这个随机值
+                temp = arr[index];
+                // 将最后一个值代替被取出的值
+                arr[index] = arr[i];
+                // 将被选中的值赋予数组最后一个值，用于剔除该值
+                arr[i] = temp;
+            }
+            return arr
+
+        }
+        let arr = ["被表白","好运连连","遍地桃花","升职","加薪","健康","出名","暴富","瘦成闪电"];
+        console.log(randomValues(arr, 9))
+        console.log()
+    </script>
+</body>
+</html>

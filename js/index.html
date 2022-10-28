@@ -9,10 +9,58 @@
 <body>
 <div></div>
 <script>
-  var a = '110';
-  var b = Number(a)
-  console.log(a);
-  console.log(b);
+  const path = require("path"); //Node.js内置模块
+  module.exports = {
+    entry: './src/main.js', //配置入口文件
+    output: {
+      path: path.resolve(__dirname, './dist'), //输出路径，__dirname：当前文件所在路径
+      filename: 'bundle.js' //输出文件
+    },
+    module:{
+      rules:[
+        {
+          test:/\.css$/,
+          use:['style-loader','css-loader']
+        },
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
+        },
+        {
+          //将图片打包到发布环境中的images目录下
+          test: /\.(jpg|jpeg|gif|png|svg)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 1024 * 1,
+              name: 'images/[hash:8].[ext]',
+              publicPath: 'dist/'
+            },
+          }
+        },
+        {
+          test:/\.js$/, //已作为js扩展名这样类型的文件
+          exclude:/node_modules/, //排除node_modules文件夹
+          use:{
+            loader:'babel-loader', //转换成es5
+            options:{
+              presets:['@babel/preset-env'], //设置编译的规则
+              plugins:[ // 设置编译的插件
+                ['@babel/plugin-transform-runtime'] //设置编译的规则
+              ]
+            }
+          }
+        }
+      ]
+    },
+   resolve: {
+     // alias: 别名
+     alias: {
+       'vue$': 'vue/dist/vue.esm.js'
+     }
+   }
+  }
+
 </script>
 </body>
 </html>
