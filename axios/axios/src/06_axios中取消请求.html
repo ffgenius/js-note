@@ -19,7 +19,7 @@
         btn1.onclick = () => {
             // 完整版
             axios({
-                url: 'http://localhost:5000/persons', // 请求地址
+                url: 'http://localhost:3000/posts', // 请求地址
                 cancelToken: new CancelToken((c) => {
                     cancel = c;
                 }),

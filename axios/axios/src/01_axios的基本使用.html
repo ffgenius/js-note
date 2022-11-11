@@ -21,13 +21,13 @@
     <br>
     <button id="btn3">点击添加某个人信息</button>
     <br>
-    <input type="text" placeholder="age" id="person_age">
-    <input type="text" placeholder="name" id="person_name">
+    <input type="text" placeholder="author" id="person_author">
+    <input type="text" placeholder="title" id="person_title">
     <br>
     <button id="btn4">点击更新某个人信息</button>
     <input type="text" placeholder="update_id" id="person_update_id">
-    <input type="text" placeholder="update_age" id="person_update_age">
-    <input type="text" placeholder="update_name" id="person_update_name">
+    <input type="text" placeholder="update_author" id="person_update_author">
+    <input type="text" placeholder="update_title" id="person_update_title">
     <br>
     <button id="btn5">点击删除某个人信息</button>
     <input type="text" placeholder="delete_id" id="person_delete_id">
@@ -36,12 +36,12 @@
         const btn2 =  document.getElementById("btn2");
         const text1 =  document.getElementById("person_id");
         const btn3 =  document.getElementById("btn3");
-        const text2 =  document.getElementById("person_age");
-        const text3 =  document.getElementById("person_name");
+        const text2 =  document.getElementById("person_author");
+        const text3 =  document.getElementById("person_title");
         const btn4 =  document.getElementById("btn4");
         const text4 =  document.getElementById("person_update_id");
-        const text5 =  document.getElementById("person_update_age");
-        const text6 =  document.getElementById("person_update_name");
+        const text5 =  document.getElementById("person_update_author");
+        const text6 =  document.getElementById("person_update_title");
         const btn5 =  document.getElementById("btn5");
         const text7 =  document.getElementById("person_delete_id");
 
@@ -49,7 +49,7 @@
         btn1.onclick = () => {
             // 完整版
             /*axios({
-                url: 'http://localhost:5000/test1?delay=2000', // 请求地址
+                url: 'http://localhost:3000/posts', // 请求地址
                 timeout: 2000,
                 method: 'GET', // 请求方式
             }).then(
@@ -60,9 +60,9 @@
             )*/
 
             // 精简版
-            axios.get('http://localhost:5000/persons').then(
+            axios.get('http://localhost:3000/posts').then(
                 response => {
-                    console.log("成功", response)},
+                    console.log("成功", response.data)},
                 error => {
                     console.log("失败", error)}
             )
@@ -72,7 +72,7 @@
         btn2.onclick = () => {
             // 完整版
            /* axios({
-                url: 'http://localhost:5000/person',
+                url: 'http://localhost:3000/posts',
                 method: 'GET',
                 params: {
                     id: text1.value
@@ -85,7 +85,7 @@
             )*/
 
             // 精简版
-            axios.get('http://localhost:5000/person', {params: {id: text1.value}}).then(
+            axios.get('http://localhost:3000/posts', {params: {id: text1.value}}).then(
                 response => {
                     console.log("成功", response)},
                 error => {
@@ -97,7 +97,7 @@
         btn3.onclick = () => {
             // 完整版
             /*axios({
-                url: 'http://localhost:5000/person',
+                url: 'http://localhost:3000/posts',
                 method: 'POST',
                 /!*data: {
                     age: text2.value,
@@ -112,9 +112,9 @@
             )*/
 
             // 精简版
-            axios.post('http://localhost:5000/person',{
-                    age: text2.value,
-                    name: text3.value
+            axios.post('http://localhost:3000/posts',{
+                    title: text2.value,
+                    author: text3.value
                 }).then(
                 response => {
                     console.log("成功", response)},
@@ -126,13 +126,13 @@
         // 送法PUT请请请求更新一个人 -- 携带json编码参数 或urlencoded编码参数
         btn4.onclick = () => {
             // 完整版
-            /*axios({
-                url:'http://localhost:5000/person',
+           /* axios({
+                url:'http://localhost:3000/posts',
                 method: 'PUT',
                 data: {
                     id: text4.value,
-                    age: text5.value,
-                    name: text6.value
+                    title: text5.value,
+                    author: text6.value
                 }
             }).then(
                 response => {
@@ -141,23 +141,21 @@
                     console.log("失败", error)}
             )*/
 
-            // 精简版
-            axios.put('http://localhost:5000/person'), {
+            //精简版
+            axios.put("http://localhost:3000/posts",{
                 id: text4.value,
-                age: text5.value,
-                name: text6.value
-            }.then(
-                response => {
-                    console.log("成功", response)},
-                error => {
-                    console.log("失败", error)}
+                author: text5.value,
+                title: text6.value
+            }).then(
+                response => { console.log('成功了' + response.data); },
+                error => { console.log('失败了' + error); }
             )
         }
 
         // 发送DELETE请求删除某个人信息 -- 携带params参数
         btn5.onclick = () => {
             axios({
-                url:`http://localhost:5000/person/${text7.value}`,
+                url:`http://localhost:3000/posts/${text7.value}`,
                 method: 'DELETE',
             }).then(
                 response => {

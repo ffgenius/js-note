@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8d185f4-3749-4725-965b-c581ed42b8d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../js/js工具函数/数组内随机取值.html" afterDir="false" />
+    <list default="true" id="e8d185f4-3749-4725-965b-c581ed42b8d6" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/../../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../js/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../js/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../js/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../js/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../js/基础面试题.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../js/基础面试题.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/16_自定义指令/1.自定义指令.html" beforeDir="false" afterPath="$PROJECT_DIR$/16_自定义指令/1.自定义指令.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue_test/31_src_多级路由/pages/Message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue_test/31_src_多级路由/pages/Message.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,8 @@
       <updated>1665627260417</updated>
       <workItem from="1665627262459" duration="8000" />
       <workItem from="1666764454763" duration="1697000" />
+      <workItem from="1667206133149" duration="1509000" />
+      <workItem from="1667631595551" duration="1310000" />
     </task>
     <servers />
   </component>

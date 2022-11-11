@@ -27,6 +27,7 @@
         // 请求拦截器
         axios.interceptors.request.use((config) => {
             config.headers.token = 'demo';
+            // 一定要写 return 否则请求将会在拦截器处被停止！
             return config
         })
 
@@ -48,7 +49,6 @@
                 method: 'GET', // 请求方式
             })
             console.log('成功', result)
-
         }
     </script>
 </body>
