@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // async 和.then 规则一样
+        async function main() {
+            // 1. 如果返回值是一个非 Promise 类型数据
+            // return 521;
+            // 2. 如果返回的是一个 Promise 对象
+            // return new Promise((resolve, reject) => {
+            //     // resolve('ok')
+            //     // reject('error')
+            // })
+            // 3. 抛出异常
+            throw 'no'
+        }
+
+        // console.log(main());
+
+
+        // await 必须写到async函数内
+
+        async function main() {
+            let p = new Promise((resolve, reject) => {
+                resolve('ok');
+                // reject('error');
+            })
+            let res = await p;
+            // console.log(res);
+
+            let res2 = await 28;
+            // console.log(res2);
+
+            let p2 = new Promise((resolve, reject) => {
+                // resolve('ok');
+                reject('error');
+            })
+
+            try {
+                let res3 = await p2;
+                console.log(res3);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        main()
+
+    </script>
+</body>
+</html>

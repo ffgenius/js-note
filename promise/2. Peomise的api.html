@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        // Promise.resolve()
+        // 如果传入的参数为 非 Promise 类型的对象，则返回的结果为成功的 Promise 对象
+        // 如果传入的参数为 Promise 类型的对象，则参数的结果决定了 resolve 的结果
+
+        let p1 = Promise.resolve(521);
+
+        let p2 = Promise.resolve(new Promise((resolve, reject) => {
+            // resolve('ok');
+            reject('Error')
+        }))
+        // console.log(p1)
+        p2.catch(reason => {
+            // console.log(reason)
+        })
+
+        // Promise.reject()
+        // 无论传入的参数为什么，都返回失败的回调
+
+        let p3 = Promise.reject(321)
+        let p4 = Promise.reject(new Promise((resolve, reject) => {
+            resolve('ok')
+        }))
+        // console.log(p3);
+        // console.log(p4)
+
+        // Promise.all()
+        // 当所有 promise 成功时，返回一个成功的数组
+        // 当有某个 promise 失败时， 返回那个失败的结果
+        let p5 = new Promise((resolve, reject) => {
+            // resolve('ok')
+            reject('err')
+        })
+
+        let p6 = Promise.resolve('success')
+        let p7 = Promise.resolve('yeah')
+
+        const result = Promise.all([p5, p6, p7]);
+        // console.log(result)
+
+        // Promise.race()
+        // 第一个完成的结果状态就是最终状态
+        let p8 = new Promise((resolve, reject) => {
+            // resolve('ok')
+            reject('err')
+        })
+
+        let p9 = Promise.resolve('success')
+        let p10 = Promise.resolve('yeah')
+
+        const results = Promise.race([p8, p9, p10]);
+        // console.log(results)
+
+        // Promise.finally
+
+        let p11= new Promise((resolve, reject) => {
+            // resolve('ok')
+            reject('err')
+        })
+
+        p11.then(value => {
+            console.log(value)
+        }, reason => {
+            console.log(reason)
+        }).catch(reason => {
+            console.log(reason)
+        }).finally(() => {
+            console.log(111)
+        })
+    </script>
+</body>
+</html>

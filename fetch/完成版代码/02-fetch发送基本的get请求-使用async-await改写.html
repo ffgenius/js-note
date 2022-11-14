@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 接口地址：http://ajax-base-api-t.itheima.net/api/getbooks
+    // 请求方式：get
+    // 查询参数(可选)：
+    //   1、id:需要查询的图书id
+
+    // 1、把代码封装成async异步函数
+    async function getData() {
+      // 通过try...catch语法处理async-await成功和失败的情况
+      try {
+        // 先获取Response对象
+        let res = await fetch('http://ajax-base-api-t.itheima.net/api/getbooks')
+        console.log(res)
+        // 通过res.json() 取出response对象中的数据
+        let json = await res.json()
+        console.log(json)
+      } catch (err) {
+        // 捕获错误信息
+        console.log(err)
+      }
+    }
+    getData()
+
+
+    // 2、如果需要通过get请求设置查询参数如何实现？
+    //    可以通过地址栏拼接查询参数完成
+    async function getData1() {
+      // 通过try...catch语法处理async-await成功和失败的情况
+      try {
+        // 先获取Response对象
+        let res = await fetch('http://ajax-base-api-t.itheima.net/api/getbooks?id=1')
+        console.log(res)
+        // 通过res.json() 取出response对象中的数据
+        let json = await res.json()
+        console.log(json)
+      } catch (err) {
+        // 捕获错误信息
+        console.log(err)
+      }
+    }
+    getData1()
+
+  </script>
+</body>
+
+</html>

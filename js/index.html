@@ -6,16 +6,15 @@
 </head>
 <body>
 <script>
-    let resolve = 'logincallback({name: 124})'
-    function unwrap(jsonp) {
-        function unwrapper(param) {
-            console.log(param);
-            return param;
-        }
-        let f = new Function("logincallback", jsonp);
-        return f(unwrapper)
+
+    function foo() {
+        let id = 11
+        setTimeout(() => {
+            console.log(this);
+        }, 100);
     }
-    unwrap(resolve)
+    var id = 21;
+    foo()
 </script>
 </body>
 </html>

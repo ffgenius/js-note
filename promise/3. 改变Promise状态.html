@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        // 改变 Promise 状态
+
+        // 1. resolve()  reject()
+        // 2. 抛出错误
+        let p = new Promise((resolve, reject) => {
+            // resolve('ok');
+            // reject('err')
+            throw '出问题了'
+        })
+
+        console.log(p)
+
+
+    </script>
+</body>
+</html>

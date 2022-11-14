@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 当执行器内为同步操作时，先改变状态在调用 .then
+        let p = new Promise((resolve, reject) => {
+            resolve('ok')
+        })
+
+        p.then(value => {
+            console.log(value)
+        }, result => {
+        })
+
+
+        // 当执行器内为异步函数时，先调用 .then 在改变状态
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok')
+            },200)
+        })
+
+        p1.then(value => {
+            alert(value)
+        }, result => {
+        })
+    </script>
+</body>
+</html>

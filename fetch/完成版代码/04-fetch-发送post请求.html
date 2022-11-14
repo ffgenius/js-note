@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="" enctype="multipart/form-data"></form>
+
+  <script>
+    // 测试接口（新增操作）：
+    // 接口地址：http://ajax-base-api-t.itheima.net/api/addbook
+    // 请求方式：post
+    // 请求体参数：
+    //  1、书名：bookname
+    //  2、作者：author
+    //  3、出版社：publisher
+
+    // post发送：json格式
+    async function add() {
+      let obj = {
+        bookname: '魔法书之如何快速学好前端',
+        author: '茵蒂克丝',
+        publisher: '格兰芬多'
+      }
+
+      let res = await fetch('http://ajax-base-api-t.itheima.net/api/addbook', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj)
+      })
+
+      let json = await res.json()
+      console.log(json)
+    }
+    add()
+
+  </script>
+</body>
+
+</html>

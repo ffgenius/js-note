@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="" enctype="application/x-www-form-urlencoded"></form>
+
+  <script>
+    /*
+      发送get请求、delete请求
+      http({
+        method:'xxx'
+        url:'xxx',
+        params:{......}
+      })
+
+      发送post请求、put请求、patch请求
+      http({
+        method:'xxx'
+        url:'xxx',
+        data:{......}
+      })
+    */
+
+    async function http(obj) {
+      // 解构赋值
+      let { method, url, params, data } = obj
+
+      // 判断是否有params参数
+      // 1、如果有params参数，则把params对象转换成 key=value&key=value的形式，并且拼接到url之后
+      // 2、如果没有params参数，则不管
+      if (params) {
+        // 把对象转换成 key=value&key=value 的方法
+        // 固定写法：new URLSearchParams(obj).toString()
+        let str = new URLSearchParams(params).toString()
+        // console.log(str)
+        // 拼接到url上
+        url += '?' + str
+      }
+
+      // 最终的结果
+      let res
+      // 判断是否有data参数，如果有，则需要设置给body，否则不需要设置
+      console.log(data)
+      if (data) {
+        // 如果有data参数，此时直接设置
+        res = await fetch(url, {
+          method: method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+      } else {
+        // 如果没有data参数，直接设置url即可
+        res = await fetch(url)
+      }
+
+      return res.json()
+    }
+
+
+    // 测试代码1：
+    // 请求方式：get
+    // 接口地址：http://ajax-base-api-t.itheima.net/api/getbooks
+    // 查询参数(可选)：
+    //   1、id:需要查询的图书id
+
+    async function fn1() {
+      let result1 = await http({
+        method: 'get',
+        url: 'http://ajax-base-api-t.itheima.net/api/getbooks',
+        params: {
+          id: 1
+        }
+      })
+      console.log(result1)
+    }
+    fn1()
+
+    // 测试代码2：
+    // 请求方式：post
+    // 接口地址：http://ajax-base-api-t.itheima.net/api/addbook
+    // 请求体参数：
+    //  1、书名：bookname
+    //  2、作者：author
+    //  3、出版社：publisher
+    async function fn2() {
+      let result2 = await http({
+        method: 'post',
+        url: 'http://ajax-base-api-t.itheima.net/api/addbook',
+        data: {
+          bookname: '魔法书111',
+          author: '嘻嘻',
+          publisher: '哈哈哈'
+        }
+      })
+      console.log(result2)
+    }
+    fn2()
+
+
+  </script>
+</body>
+
+</html>

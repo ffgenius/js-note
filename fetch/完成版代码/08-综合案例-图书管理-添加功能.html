@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- 引入 lib 目录下的 bootstrap 样式表 -->
+  <link rel="stylesheet" href="./lib/bootstrap-v4.6.0.css" />
+  <style>
+    :root {
+      font-size: 15px;
+    }
+
+    body {
+      padding-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 栅格系统 -->
+  <div class="container-fluid">
+    <!-- 栅格系统中的一行 -->
+    <div class="row">
+      <!-- 左侧的表格，占了 8 列 -->
+      <div class="col-sm-8">
+        <table class="table table-bordered table-striped table-dark table-hover text-center">
+          <thead>
+            <!-- 表头行 -->
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">书名</th>
+              <th scope="col">作者</th>
+              <th scope="col">出版社</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 表格中的每一行 -->
+            <tr>
+              <th scope="row">xxx</th>
+              <td>xxx</td>
+              <td>xxx</td>
+              <td>xxx</td>
+              <td>
+                <button type="button" class="btn btn-link btn-sm">
+                  删除
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 右侧的添加区域，占了 4 列 -->
+      <div class="col-sm-4">
+        <!-- 添加图书的卡片 -->
+        <div class="card text-white bg-secondary sticky-top">
+          <div class="card-header">添加新图书</div>
+          <form class="card-body bg-light" id="addForm">
+            <!-- 书名 -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">书名</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入图书名称" name="bookname" />
+            </div>
+            <!-- 作者 -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">作者</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入作者名字" name="author" />
+            </div>
+            <!-- 出版社 -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">出版社</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入出版社名称" name="publisher" />
+            </div>
+            <!-- 添加按钮 -->
+            <button class="btn btn-dark" type="submit">添加</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./lib/form-serialize.js"></script>
+  <script src="./lib/http.js"></script>
+  <script>
+    /* 
+      获取所有图书：
+        1、接口地址：http://ajax-base-api-t.itheima.net/api/getbooks
+        2、请求方式：get
+
+      添加图书:
+        1、接口地址：http://ajax-base-api-t.itheima.net/api/addbook
+        2、请求方式：post
+        3、请求体参数：
+            1、bookname：图书的名称
+            2、author：作者
+            3、publisher：出版社
+
+      删除图书：
+        1、接口地址：http://ajax-base-api-t.itheima.net/api/delbook
+        2、请求方式：delete
+        3、查询参数：
+          1、id：需要删除图片的id
+      
+    */
+    let tbody = document.querySelector('tbody')
+    let form = document.querySelector('form')
+
+    // 页面一打开需要首屏加载
+    render()
+
+    // 表单提交功能
+    form.addEventListener('submit', async function (e) {
+      //  阻止浏览器默认行为
+      e.preventDefault()
+
+      // 获取表单数据——》通过serialize插件获取
+      let result = serialize(form, { hash: true })
+      console.log(result)
+
+      // 把获取的表单数据，发送给服务器
+      let res = await http({
+        method: 'post',
+        url: 'http://ajax-base-api-t.itheima.net/api/addbook',
+        data: result
+      })
+      console.log(res)
+
+      // 通过res的status判断是否添加成功
+      if (res.status === 201) {
+        // 重新渲染
+        render()
+        // 重置表单
+        form.reset()
+      } else {
+        // 如果不成功，弹框提示错误信息即可
+        alert(res.msg)
+      }
+
+    })
+
+    // 把渲染的代码封装成函数
+    async function render() {
+      // 获取数据
+      let res = await http({
+        method: 'get',
+        url: 'http://ajax-base-api-t.itheima.net/api/getbooks',
+      })
+      console.log(res.data)
+
+      let htmlStr = ''
+      // 遍历数组，每遍历一项，就创建一个tr出来，拼接成完整字符串再一起添加到tbody中去
+      res.data.forEach(item => {
+        // console.log(item)
+        htmlStr += `
+          <tr>
+            <th scope="row">${item.id}</th>
+            <td>${item.bookname}</td>
+            <td>${item.author}</td>
+            <td>${item.publisher}</td>
+            <td>
+              <button type="button" class="btn btn-link btn-sm">
+                删除
+              </button>
+            </td>
+          </tr>
+        `
+      })
+      // console.log(htmlStr)
+      // 把拼接好的数据，设置到tbody中去
+      tbody.innerHTML = htmlStr
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03242f9c-e1a0-4ede-8d17-e0b372ae1d30" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/js工具函数/JSONP转JSON.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js工具函数/数组去重/双重for循环.html" beforeDir="false" afterPath="$PROJECT_DIR$/js工具函数/数组去重/双重for循环.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/基础面试题.md" beforeDir="false" afterPath="$PROJECT_DIR$/基础面试题.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue/代码/vue_basic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../vue/代码/vue_basic/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +88,7 @@
       <workItem from="1667810214585" duration="962000" />
       <workItem from="1667895545552" duration="236000" />
       <workItem from="1667983672419" duration="1634000" />
+      <workItem from="1668150077699" duration="3801000" />
     </task>
     <servers />
   </component>

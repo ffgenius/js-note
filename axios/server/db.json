@@ -1,0 +1,41 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "红楼梦",
+      "author": "曹雪芹",
+      "id": 5
+    },
+    {
+      "title": "西游记",
+      "author": "吴承恩",
+      "id": 6
+    },
+    {
+      "title": "三国演义",
+      "author": "罗贯中",
+      "id": 7
+    },
+    {
+      "title": "水浒传",
+      "author": "施耐庵",
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "id": "1",
+    "author": "2",
+    "title": "3"
+  }
+}

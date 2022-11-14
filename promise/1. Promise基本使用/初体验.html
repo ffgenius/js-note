@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button class="btn">点击抽奖</button>
+    <script>
+        function rand(a, b) {
+            return Math.ceil(Math.random() * (a - b + 1)) + (b - 1);
+        }
+
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+
+            // Promise 实现
+            // resolve 解决 函数类型的数据
+            // reject 拒绝 函数类型的数据
+            let p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let n = rand(1, 100);
+                    if (n < 30) {
+                        resolve(n)
+                    } else {
+                        reject(n)
+                    }
+                },100)
+            })
+
+            // 调用 then 方法
+            p.then((value) => {
+                alert('恭喜中奖' + value);
+            }, (reason) => {
+                alert('再接再厉' + reason)
+            })
+        })
+    </script>
+</body>
+</html>

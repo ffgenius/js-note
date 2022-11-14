@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 接口地址：http://ajax-base-api-t.itheima.net/api/getbooks
+    // 请求方式：get
+    // 查询参数(可选)：
+    //   1、id:需要查询的图书id
+
+    async function getData() {
+      let res = await fetch('http://ajax-base-api-t.itheima.net/api/getbooks')
+      console.log(res.ok) // 返回一个布尔类型，表示请求是否成功
+      console.log(res.status) // 返回一个数字，表示HTTP回应的状态码（例如：200，表示请求成功）
+      console.log(res.statusText) // 返回状态的文本信息（例如：请求成功之后，服务器返回OK）
+      console.log(res.url) // 返回请求的url地址
+
+      let json = await res.json()
+      console.log(json)
+
+    }
+    getData()
+  </script>
+</body>
+
+</html>
