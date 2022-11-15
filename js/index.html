@@ -6,15 +6,18 @@
 </head>
 <body>
 <script>
+    const proto = {
+        foo: 'hello'
+    };
+    const obj = {
+        foo: 'world',
+        find() {
+            return super.foo;
+        }
+    };
+    console.log(Object.setPrototypeOf(obj, proto))
 
-    function foo() {
-        let id = 11
-        setTimeout(() => {
-            console.log(this);
-        }, 100);
-    }
-    var id = 21;
-    foo()
+    console.log(obj.find())
 </script>
 </body>
 </html>
