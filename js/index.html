@@ -6,18 +6,17 @@
 </head>
 <body>
 <script>
-    const proto = {
-        foo: 'hello'
-    };
-    const obj = {
-        foo: 'world',
-        find() {
-            return super.foo;
+    let str = 'dfhsdufhjsdfhjweif'
+    let o = {}
+    for (let i=0; i< str.length; i++) {
+        let char = str.charAt(i)
+        if(o[char]) {
+            o[char]++
+        } else {
+            o[char] = 1
         }
-    };
-    console.log(Object.setPrototypeOf(obj, proto))
-
-    console.log(obj.find())
+        console.log(char)
+    }
 </script>
 </body>
 </html>
